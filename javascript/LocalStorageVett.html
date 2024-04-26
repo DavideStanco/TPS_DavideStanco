@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    
+</head>
+
+<style>
+    body {
+            font-family: 'Verdana', sans-serif;
+            background: #4287f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        div {
+            background-color: white;
+            width: 400px;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #4287f5;
+        }
+
+        input {
+            margin: 10px 0;
+            padding: 8px;
+            width: calc(100% - 20px);
+            border: 1px solid #4287f5;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="button"] {
+            background-color: #4287f5;
+            color: white;
+            cursor: pointer;
+        }
+
+        input[type="button"]:hover {
+            background-color: #3366cc;
+        }
+</style>
+
+<script>
+
+    function salva(){
+        var print = document.getElementById("nome").value;
+
+        var print1 = document.getElementById("cognome").value;
+
+
+      
+        
+        const vett = [];
+        vett.push(print, print1);
+
+        localStorage.setItem("dati", vett); 
+        window.location.href="LocalStorageVett2.html";
+    
+    }
+</script>
+
+<body>
+    <div>
+        <h1>Registrazione:</h1>
+        <br>
+        <input type="text" placeholder="Nome" id="nome">
+        <input type="text" placeholder="Cognome" id="cognome">
+
+        <input type="button" value="clicca per salvare" onclick="salva()">
+    </div>
+</body>
+</html>

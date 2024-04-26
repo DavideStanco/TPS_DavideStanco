@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cerchi Olimpici</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="olympicRings" width="400" height="200"></canvas>
+
+  <script>
+    const canvas = document.getElementById('olympicRings');
+    const ctx = canvas.getContext('2d');
+    const posizioniCerchi = [
+      { x: 60, y: 50, colore: '#0074C8' },   // Blu
+      { x: 140, y: 50, colore: '#000000' },  // Nero
+      { x: 220, y: 50, colore: '#AE1C28' },  // Rosso
+      { x: 100, y: 80, colore: '#FFD100' },  // Giallo
+      { x: 180, y: 80, colore: '#009F3D' },  // Verde
+    ];
+
+    let i = 0;
+
+    // Funzione per disegnare un cerchio olimpico
+    function disegnaCerchioOlimpico(x, y, colore) {
+      ctx.beginPath();
+      ctx.arc(x, y, 30, 0, 2 * Math.PI);
+      ctx.lineWidth = 6;
+      ctx.strokeStyle = colore;
+      ctx.stroke();
+    }
+
+    // Ciclo while per disegnare i cerchi olimpici
+    while (i < posizioniCerchi.length) {
+      const posizione = posizioniCerchi[i];
+      disegnaCerchioOlimpico(posizione.x, posizione.y, posizione.colore);
+      i++;
+    }
+  </script>
+</body>
+</html>

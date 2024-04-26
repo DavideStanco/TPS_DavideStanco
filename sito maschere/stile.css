@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+
+body{
+    margin: 0px;
+}
+
+h1{
+  color: #262626;
+    font-family: 'Bebas Neue', cursive;
+    font-family: 'Cinzel', serif;
+    font-family: 'Hammersmith One', sans-serif;
+    font-weight: bold;
+    font-size: 50px;
+    letter-spacing: 0.55px;
+    text-align: center;
+    color: #fd8038;
+}
+
+p{
+  color: #262626;
+    text-align: center;
+    text-decoration: none;
+    font-size: 17px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.topnav {
+    overflow: hidden;
+    background-color: #333;
+  }
+
+  .topnav a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .topnav a:hover {
+    color: black;
+  }
+
+  .topnav a.active {
+    font-family: 'Bebas Neue', cursive;
+    font-family: 'Cinzel', serif;
+    font-family: 'Hammersmith One', sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 20px;
+    letter-spacing: 0.55px;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .topnav .icon {
+    display: none;
+  }
+
+  .vertical {
+    border-left: 2px solid white;
+    height: 50px;
+    float: left;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  
+  }
+
+.Home{
+  max-width: 800px;
+  margin: auto;
+  float: right;
+  padding-right: 150px;
+}
+
+#img-home{
+  float: left;
+  width: 650px;
+  padding-left: 150px;
+}
+
+.home-block{
+  padding-top: 50px;
+}
+
+.txt-center{
+  text-align: center;
+}
+
+
+hr{
+  margin-top: 60px;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sottotitolo{
+  margin: auto;
+  padding-top: 10px;
+  max-width: 600px;
+}
+
+.img-carnevale{
+  padding-top: 40px;
+  padding-left: 400px;
+  width: 300px;
+}
+
+.Desc-carnevale{
+  padding-top: 40px;
+  float: right;
+  padding-right: 400px;
+  max-width: 500px;
+  font-size: 30px;
+}

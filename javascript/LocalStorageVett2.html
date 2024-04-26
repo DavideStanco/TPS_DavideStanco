@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Document</title>
+</head>
+
+<style>
+    body {
+            font-family: 'Verdana', sans-serif;
+            background: #4287f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        p {
+            background-color: white;
+            width: 400px;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+</style>
+
+<body>
+    <p id="printVett"></p>
+    
+
+<script>
+    var dati = localStorage.getItem("dati");
+    var vett = dati.split(',');
+
+    var contenuto = "<b>Nome:</b> " + vett[0] + "<br><b>Cognome:</b> " + vett[1];
+    document.getElementById("printVett").innerHTML = contenuto;
+
+</script>
+</body>
+</html>

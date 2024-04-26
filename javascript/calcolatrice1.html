@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Calcolatrice</title>
+    <script>
+        function somma(){
+            var a = parseInt(document.getElementById("num1").value);
+            var b = parseInt(document.getElementById("num2").value);
+            var c = a + b;
+            document.getElementById("risultato").innerHTML = c;
+        }
+
+        function differenza(){
+            var a = document.getElementById("num1").value;
+            var b = document.getElementById("num2").value;
+            var c = a - b;
+            document.getElementById("risultato").innerHTML = c;
+        }
+
+        function moltiplica(){
+            var a = document.getElementById("num1").value;
+            var b = document.getElementById("num2").value;
+            var c = a * b;
+            document.getElementById("risultato").innerHTML = c;
+        }
+
+        function dividi(){
+            var a = document.getElementById("num1").value;
+            var b = document.getElementById("num2").value;
+            var c = a / b;
+            document.getElementById("risultato").innerHTML = c;
+        }
+
+    </script>
+</head>
+<body style="text-align: center; border: 0px;">
+    <div style="width: 300px; border: 15px solid rgb(26, 140, 216); padding: 50px; margin: 20px; padding-bottom: 35px;">
+        <input type = "text" id = "num1">
+        <br>
+        <input type = "submit" value = "+" onclick="somma()">
+        <input type = "submit" value = "-" onclick="differenza()">
+        <input type = "submit" value = "*" onclick="moltiplica()">
+        <input type = "submit" value = "/" onclick="dividi()">
+        <br>
+        <input type = "text" id = "num2">
+        <br>
+        
+        <p id = "risultato"></p>
+    </div>
+    
+
+</body>
+</html>

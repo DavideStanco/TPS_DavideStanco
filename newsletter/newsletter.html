@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newsletter</title>
+    <style>
+        body{
+            font-family: "Verdana", sans-serif;
+            margin: auto;
+            text-align: center;
+            padding-right: 50px;
+            padding-top: 50px;
+        }
+        .container{
+            padding-left: 50px;
+        }
+        .field{
+            display: flex;
+            padding-top: 20px;
+            margin: auto;
+
+        }
+        .schema{
+            display: flex;
+            flex-direction:column;
+            text-align: center;
+            padding-right: 20px;
+        }
+        fieldset{
+            width: 500px;
+            margin: auto;
+        }
+        fieldset select {
+            width: 180px;
+        }
+        fieldset input {
+            width: 180px;
+        }
+
+        .contatore{
+            padding-top: 50px;
+            margin: auto;
+        }
+        
+    </style>
+</head>
+
+<body>
+
+    <form action="#" class="container">
+        <fieldset >
+          <legend>inserisci i tuoi dati</legend>
+          <div style="margin: auto;">
+          <div class="field">
+          <div class="schema">
+            <label for="name">Nome Cognome </label>
+            <input name="nome" type="text" required autofocus="autofocus">
+          </div>
+          <div class="schema">
+            <label>Email</label>
+            <input name="email" type="email" placeholder="user@dominio.it" required>
+          </div>
+
+
+        </div>
+        <div class="field">
+            <div class="schema">
+                <label>Telefono</label>
+                <input name="tel"  placeholder="xxx xxxx xxx" type="tel" required>
+
+            </div>
+            <div class="schema">
+                <label>Paese</label><select name="lingua">
+                <option>Italia<option>Inghilterra<option>Francia<option>Germania</select>
+
+              </div>
+          </div>
+
+
+          <div class="field">
+            <div class="schema">
+                <label>Data e ora di nascita </label><input name="dataora" type="datetime-local">
+
+            </div>
+            
+          </div >
+          <div style="padding-top: 20px;">
+            <input type="submit" value="Invia form" style="text-align: center;  margin: auto;">
+        </div>
+          </div>
+        </fieldset>
+        
+      </form>
+      <div class="contatore">
+        <h3 style="max-width:500px; margin: auto;">inserendo i tuoi dati ti manderemo notifiche e aggiornamenti sul sito di fotografia</h3>
+        
+        
+    </div>
+</body>

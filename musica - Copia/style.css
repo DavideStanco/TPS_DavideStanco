@@ -1,0 +1,78 @@
+@font-face {
+    font-family: minecraft;
+    src: url(MinecraftRegular-Bmg3.otf);
+}
+body{
+    margin: 0px;
+}
+
+#home{
+    background-image: url(sfondo.webp);
+    height: 100vh;
+}
+
+#stone{
+    background-image: url(stone.webp);
+    height: 100vh;
+}
+
+#diamante{
+    background-image: url(diamante.webp);
+    height: 100vh;
+}
+
+.center{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.centro{
+    text-align: center;
+    font-family: minecraft;
+}
+
+
+.nomedisco{
+    text-transform: uppercase;
+    text-align: center;
+    font-family: minecraft;
+    font-weight: bold;
+}
+
+.testo{
+    margin-left: 10%;
+    margin-right: 10%;
+    font-family: minecraft;
+    text-align: center;
+}
+
+.audio{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.container{
+    display: flex;
+    flex-wrap: wrap;
+}
+.container div {
+    flex: 1;
+    flex-basis: 300px;
+    height: 320px;
+    background-color: white;
+    margin: 50px;
+    border-radius: 20px;
+    margin: 50px;
+}
+
+
+#bottone{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 25px;
+}
+

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <!-- Metadati -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Titolo della pagina -->
+  <title>Calcolatrice</title>
+  <!-- Stile CSS per la presentazione -->
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    #calculator {
+      width: 300px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      background-color: #fff;
+    }
+
+    #display {
+      margin-bottom: 10px;
+      padding: 15px;
+      font-size: 20px;
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    .row {
+      display: flex;
+    }
+
+    .button {
+      flex: 1;
+      margin: 5px;
+      padding: 15px;
+      font-size: 18px;
+      text-align: center;
+      cursor: pointer;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #eee;
+      transition: background-color 0.3s;
+    }
+
+    .button:hover {
+      background-color: #ddd;
+    }
+
+    .button.operator {
+      background-color: #f0f0f0;
+    }
+
+    .button.operator:hover {
+      background-color: #e0e0e0;
+    }
+
+    .button.equal {
+      flex: 3.2;
+      
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- Contenitore principale della calcolatrice -->
+<div id="calculator">
+    <!-- Display della calcolatrice -->
+    <input type="text" id="display" disabled>
+    
+    <!-- Pulsanti per i numeri e gli operatori -->
+    <div class="row">
+        <button class="button" onclick="cancellaDisplay()">C</button>
+        <button class="button" onclick="quadrato()">x²</button>
+        <button class="button" onclick="radiceQuadrata()">√</button>
+        <button class="button" onclick="impostaOperatore('/')">÷</button>
+        
+    </div>
+    
+    <div class="row">
+        <button class="button" onclick="aggiungiNumero('7')">7</button>
+        <button class="button" onclick="aggiungiNumero('8')">8</button>
+        <button class="button" onclick="aggiungiNumero('9')">9</button>
+        <button class="button" onclick="impostaOperatore('*')">×</button>
+    </div>
+    
+    <div class="row">
+        <button class="button" onclick="aggiungiNumero('4')">4</button>
+        <button class="button" onclick="aggiungiNumero('5')">5</button>
+        <button class="button" onclick="aggiungiNumero('6')">6</button>
+        <button class="button" onclick="impostaOperatore('-')">-</button>
+    </div>
+    
+    <div class="row">
+        <button class="button" onclick="aggiungiNumero('1')">1</button>
+        <button class="button" onclick="aggiungiNumero('2')">2</button>
+        <button class="button" onclick="aggiungiNumero('3')">3</button>
+        <button class="button" onclick="impostaOperatore('+')">+</button>
+        
+        
+    </div>
+    
+    <div class="row">
+        <button class="button" onclick="aggiungiNumero('0')">0</button>
+        <button class="button" onclick="aggiungiVirgola()">.</button>
+        <button class="button equal" onclick="calcola()">=</button>
+    </div>
+  </div>
+
+<!-- Script JavaScript per la logica della calcolatrice -->
+<script>
+  let valoreDisplay = '';
+  let operatore = '';
+  let primoOperando = '';
+
+  // Aggiunge il numero al display
+  function aggiungiNumero(numero) {
+    valoreDisplay += numero;
+    aggiornaDisplay();
+  }
+
+  // Imposta l'operatore e salva il primo operando
+  function impostaOperatore(op) {
+    if (primoOperando === '') {
+      primoOperando = valoreDisplay;
+      valoreDisplay = '';
+      operatore = op;
+      aggiornaDisplay();
+    }
+  }
+
+  // Cancella il display e resetta le variabili
+  function cancellaDisplay() {
+    valoreDisplay = '';
+    primoOperando = '';
+    operatore = '';
+    aggiornaDisplay();
+  }
+
+  // Esegue il calcolo in base all'operatore selezionato
+  function calcola() {
+    if (operatore && primoOperando && valoreDisplay) {
+      const num1 = parseFloat(primoOperando);
+      const num2 = parseFloat(valoreDisplay);
+      switch (operatore) {
+        case '+':
+          valoreDisplay = num1 + num2;
+          break;
+        case '-':
+          valoreDisplay = num1 - num2;
+          break;
+        case '*':
+          valoreDisplay = num1 * num2;
+          break;
+        case '/':
+          if (num2 !== 0) {
+            valoreDisplay = num1 / num2;
+          } else {
+            valoreDisplay = 'Errore';
+          }
+          break;
+        default:
+          valoreDisplay = 'Errore';
+      }
+      aggiornaDisplay();
+      primoOperando = '';
+      operatore = '';
+    }
+  }
+
+  // Calcola il quadrato del numero corrente
+  function quadrato() {
+    if (valoreDisplay !== '') {
+      const num = parseFloat(valoreDisplay);
+      valoreDisplay = num * num;
+      aggiornaDisplay();
+    }
+  }
+
+  // Calcola la radice quadrata del numero corrente
+  function radiceQuadrata() {
+    if (valoreDisplay !== '') {
+      const num = parseFloat(valoreDisplay);
+      if (num >= 0) {
+        valoreDisplay = Math.sqrt(num);
+      } else {
+        valoreDisplay = 'Errore';
+      }
+      aggiornaDisplay();
+    }
+  }
+
+  // Aggiunge la virgola al numero corrente
+  function aggiungiVirgola() {
+    if (valoreDisplay.indexOf('.') === -1) {
+      valoreDisplay += '.';
+      aggiornaDisplay();
+    }
+  }
+
+  // Aggiorna il valore nel display
+  function aggiornaDisplay() {
+    document.getElementById('display').value = valoreDisplay;
+  }
+</script>
+
+</body>
+</html>
