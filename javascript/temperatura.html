@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <br>
+  <title>Tabella Temperature</title>
+  <!-- Collegamento a Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <h1 >Tabella Temperature Medie Terrestri</h1>
+    <hr class="my-4">
+    <!-- Input di file per caricare il CSV -->
+    <input type="file" id="fileInput" onchange="readFile(this)">
+    <br>
+    <br>
+    <br>
+    <div id="table-container"></div> <!-- Contenitore della tabella -->
+  </div>
+
+  <!-- Collegamento a jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <!-- Collegamento a Bootstrap -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Collegamento a PapaParse -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+
+  <script>
+    function readFile(input) {
+      // Funzione per leggere il file CSV quando viene selezionato
+      let file = input.files[0]; // Ottiene il primo file selezionato dall'input
+      let fileReader = new FileReader(); // Crea un oggetto FileReader per leggere il contenuto del file
+      fileReader.readAsText(file); // Legge il contenuto del file come testo
+      fileReader.onload = function() { // Imposta una funzione quando il file è stato completamente letto
+        var csv = fileReader.result; // Ottiene il contenuto del file CSV
+        var data = Papa.parse(csv, { header: true }).data; // Utilizza PapaParse per analizzare il CSV in un array di oggetti
+        var tableHtml = "<table class='table table-striped'><thead><tr><th>Anno</th><th>Temperatura Media</th></tr></thead><tbody>"; // Inizio della tabella HTML
+
+        data.forEach(function(row) { // Per ogni riga di dati nel CSV aggiunge una riga alla tabella HTML con i dati dell'anno e della temperatura
+          tableHtml += "<tr><td>" + row.Anno + "</td><td>" + row.Temperatura + "</td></tr>"; 
+        });
+
+        tableHtml += "</tbody></table>"; // Fine della tabella HTML
+        $("#table-container").html(tableHtml); // Inserire la tabella HTML nel contenitore
+      };
+    }
+  </script>
+</body>
+</html>
