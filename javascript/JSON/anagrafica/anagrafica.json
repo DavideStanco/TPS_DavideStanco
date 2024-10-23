@@ -1,0 +1,87 @@
+{
+    "Nomi": [
+        {
+            "Nome":"Andrea"
+        },
+        {
+            "Nome":"Leonardo"
+        },
+        {
+            "Nome":"Gabriele"
+        }
+    ],
+
+    "Cognomi": [
+        {
+            "Cognome":"Rovetta"
+        },
+        {
+            "Cognome":"Stanco"
+        },
+        {
+            "Cognome":"Milanov"
+        }
+    ],
+
+    "Eta": [
+        {
+            "Eta":"22"
+        },
+        {
+            "Eta":"18"
+        },
+        {
+            "Eta":"65"
+        }
+    ],
+
+    "Indirizzi": [
+        {
+            "Indirizzo":"via Luca Rovetta 5"
+        },
+        {
+            "Indirizzo":"via Davide Rovetta 5"
+        },
+        {
+            "Indirizzo":"via sovico milanov 7"
+        }
+    ],
+
+    "Telefoni": [
+        {
+            "Telefoni": [
+                {
+                    "Telefono1":"333457628",
+                    "Telefono2":"347563868"
+                },
+                {
+                    "Telefono1":"223452346",
+                    "Telefono2":"986543828"
+                },
+                {
+                    "Telefono1":"436864383",
+                    "Telefono2":"546775446"
+                }
+            ]
+        }
+    ],
+
+    "Sport": [
+        {
+            "Sport": [
+                {
+                    "Sport1":"calisthenics",
+                    "Sport2":"moto"
+                },
+                {
+                    "Sport1":"palestra",
+                    "Sport2":"parkour"
+                },
+                {
+                    "Sport1":"divano",
+                    "Sport2":"cane"
+                }
+            ]
+        }
+    ]
+}

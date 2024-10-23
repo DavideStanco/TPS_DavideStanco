@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1 class="titolo">Anagrafica JSON</h1>
+    <input type="button" onclick="caricaDati()" value = "Carica i dati">
+
+    <div id="risForm" style="visibility: hidden;">
+    
+        <div id="stringaJSON"> </div>
+    
+    </div>
+
+    <script>
+        function caricaDati(){
+            var file = new XMLHttpRequest();
+            file.open("GET", "https://raw.githubusercontent.com/Mattia-Visentin/mattiavise/refs/heads/main/JSON/Anagrafica.json", true);
+            file.send();
+            file.onreadystatechange = function(){
+                if (this.readyState == 4 && this.status == 200) {
+                    var jsonDoc = JSON.parse(file.responseText);
+                    creaTabella(jsonDoc);
+                }
+            };
+            document.getElementById("risForm").style.visibility = "visible";
+        }
+
+        function creaTabella(ogg){
+            var tabella = document.createElement("table");
+
+            var intestazioneCampi = ["Nome", "Cognome", "Età", "Indirizzo", "Città", "Telefono1", "Telefono2", "Sport1", "Sport2"];
+            var intestazione = document.createElement("tr");
+            for (let i = 0; i < intestazioneCampi.length; i++) {
+                var header = document.createElement("th");
+                header.appendChild(document.createTextNode(intestazioneCampi[i]));
+                intestazione.appendChild(header);
+            }
+            tabella.appendChild(intestazione);
+
+            for(let i = 0; i < ogg.Nomi.length; i++){
+                var colonna = document.createElement("tr");
+
+                var nomeCell = document.createElement("td");
+                nomeCell.appendChild(document.createTextNode(ogg.Nomi[i].Nome));
+                colonna.appendChild(nomeCell);
+
+                var cognomeCell = document.createElement("td");
+                cognomeCell.appendChild(document.createTextNode(ogg.Cognomi[i].Cognome));
+                colonna.appendChild(cognomeCell);
+
+                var etaCell = document.createElement("td");
+                etaCell.appendChild(document.createTextNode(ogg.Eta[i].Eta));
+                colonna.appendChild(etaCell);
+
+                var indirizzoCell = document.createElement("td");
+                indirizzoCell.appendChild(document.createTextNode(ogg.Indirizzi[i].Indirizzo));
+                colonna.appendChild(indirizzoCell);
+
+                var cittaCell = document.createElement("td");
+                cittaCell.appendChild(document.createTextNode(ogg.Citta[i].Citta));
+                colonna.appendChild(cittaCell);
+
+                var telefono1Cell = document.createElement("td");
+                telefono1Cell.appendChild(document.createTextNode(ogg.Telefoni[0].Telefoni[i].Telefono1));
+                colonna.appendChild(telefono1Cell);
+
+                var telefono2Cell = document.createElement("td");
+                telefono2Cell.appendChild(document.createTextNode(ogg.Telefoni[0].Telefoni[i].Telefono2));
+                colonna.appendChild(telefono2Cell);
+
+                var sport1Cell = document.createElement("td");
+                sport1Cell.appendChild(document.createTextNode(ogg.Sport[0].Sport[i].Sport1));
+                colonna.appendChild(sport1Cell);
+
+                var sport2Cell = document.createElement("td");
+                sport2Cell.appendChild(document.createTextNode(ogg.Sport[0].Sport[i].Sport2));
+                colonna.appendChild(sport2Cell);
+
+                tabella.appendChild(colonna);
+            }
+
+            document.getElementById("stringaJSON").appendChild(tabella);
+
+
+        }
+
+    </script>
+    
+</body>
+</html>
