@@ -18,7 +18,7 @@
     <script>
         function caricaDati(){
             var file = new XMLHttpRequest();
-            file.open("GET", "https://raw.githubusercontent.com/Mattia-Visentin/mattiavise/refs/heads/main/JSON/anagrafica.json", true);
+            file.open("GET", "https://raw.githubusercontent.com/Mattia-Visentin/mattiavise/refs/heads/main/JSON/anagrafica/anagrafica.json", true);
             file.send();
             file.onreadystatechange = function(){
                 if (this.readyState == 4 && this.status == 200) {
