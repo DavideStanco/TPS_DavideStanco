@@ -7,8 +7,9 @@
 /* Stile generale del body */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f8ff; /* Azzurro chiaro */
-    color: #333; /* Colore del testo */
+    line-height: 35px;
+    background-color: #f0f8ff; 
+    color: #333; 
     padding: 20px;
 }
 
@@ -16,8 +17,14 @@ body {
 .titolo {
     text-align: center;
     font-size: 2em;
-    color: #007acc; /* Azzurro scuro */
+    color: #007acc; 
     margin-bottom: 20px;
+}
+
+.titoloDettagli{
+    font-size: 2em;
+    color: #007acc; 
+    margin-bottom: 40px;
 }
 
 /* Stile per il pulsante */
