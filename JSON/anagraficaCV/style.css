@@ -29,7 +29,7 @@ body {
 
 /* Stile per il pulsante */
 input[type="button"] {
-    background-color: #007acc; 
+    background-color: #007acc; /* Azzurro scuro */
     color: white;
     border: none;
     border-radius: 5px;
@@ -41,7 +41,7 @@ input[type="button"] {
 }
 
 input[type="button"]:hover {
-    background-color: #005999; 
+    background-color: #005999; /* Azzurro più scuro per l'hover */
 }
 
 /* Stile per la tabella */
@@ -52,18 +52,18 @@ table {
 }
 
 th, td {
-    border: 1px solid #007acc; 
+    border: 1px solid #007acc; /* Bordi azzurri */
     padding: 8px;
     text-align: left;
 }
 
 th {
-    background-color: #007acc; 
+    background-color: #007acc; /* Intestazione azzurra */
     color: white;
 }
 
 td {
-    background-color: white; 
+    background-color: white; /* Celle bianche */
 }
 
 /* Stile per il contenitore della tabella */
