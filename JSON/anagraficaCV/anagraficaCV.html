@@ -72,7 +72,7 @@
                 var immagineCell = document.createElement("td");
                 var link = document.createElement("a");
                 link.href = `dettaglio.html?id=${persona.id}`; // URL con parametro ID, per aprire la pagina di ogni persona in base al loro id
-                link.target = "_self";
+                link.target = "_blank";
 
                 var img = document.createElement("img");
                 img.src = persona.thumb;
