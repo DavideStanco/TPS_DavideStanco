@@ -4,7 +4,6 @@
     box-sizing: border-box;
 }
 
-/* Stile generale del body */
 body {
     font-family: Arial, sans-serif;
     line-height: 35px;
@@ -13,7 +12,6 @@ body {
     padding: 20px;
 }
 
-/* Stile per il titolo */
 .titolo {
     text-align: center;
     font-size: 2em;
@@ -25,11 +23,11 @@ body {
     font-size: 2em;
     color: #007acc; 
     margin-bottom: 40px;
+    text-align: center;
 }
 
-/* Stile per il pulsante */
 input[type="button"] {
-    background-color: #007acc; /* Azzurro scuro */
+    background-color: #007acc; 
     color: white;
     border: none;
     border-radius: 5px;
@@ -41,10 +39,10 @@ input[type="button"] {
 }
 
 input[type="button"]:hover {
-    background-color: #005999; /* Azzurro più scuro per l'hover */
+    background-color: #005999; 
 }
 
-/* Stile per la tabella */
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -52,21 +50,74 @@ table {
 }
 
 th, td {
-    border: 1px solid #007acc; /* Bordi azzurri */
+    border: 1px solid #007acc; 
     padding: 8px;
     text-align: left;
 }
 
 th {
-    background-color: #007acc; /* Intestazione azzurra */
+    background-color: #007acc; 
     color: white;
 }
 
 td {
-    background-color: white; /* Celle bianche */
+    background-color: white; 
 }
 
-/* Stile per il contenitore della tabella */
 #stringaJSON {
     margin-top: 20px;
+}
+
+
+/*stile per css*/
+
+.container-cv {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    font-family: Arial, sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.colonna-sx {
+    flex: 1;
+    text-align: center;
+}
+
+.colonna-sx img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.info-personali p {
+    margin: 5px 0;
+    font-size: 18px;
+    line-height: 1.4;
+}
+
+.colonna-dx {
+    flex: 2;
+}
+
+.colonna-dx p {
+    margin: 5px 1;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.titolo-sezione {
+    font-weight: bold;
+    margin-top: 25px;
+    text-transform: uppercase;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
 }

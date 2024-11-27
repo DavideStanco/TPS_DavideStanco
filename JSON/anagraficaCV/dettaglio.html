@@ -23,7 +23,7 @@
                 return;
             }
 
-            const cvFile = `https://raw.githubusercontent.com/DavideStanco/TPS_DavideStanco/refs/heads/main/JSON/anagraficaCV/cv_${idPersona}.json`;
+            const cvFile = `cv_${idPersona}.json`;
 
             var file = new XMLHttpRequest();
             file.open("GET", cvFile, true);
@@ -44,25 +44,39 @@
             const dettagliDiv = document.getElementById("dettagliCV");
 
             dettagliDiv.innerHTML = `
-                <div class="curriculum">
-                    <div>
-                        <img src= ${cvData.foto} style = "width: 150px"
+                <div class="container-cv">
+                    
+                    <div class="colonna-sx">
+                        <img src="${cvData.foto}" alt="Foto del profilo">
+                        <div class="info-personali">
+                            <p><strong>Nome:</strong> ${cvData.nome}</p>
+                            <p><strong>Cognome:</strong> ${cvData.cognome}</p>
+                            <p><strong>Data di nascita:</strong> ${cvData.dataDiNascita}</p>
+                            <p><strong>Telefono 1:</strong> ${cvData.telefono[0].telefono1}</p>
+                            <p><strong>Telefono 2:</strong> ${cvData.telefono[0].telefono2}</p>
+                            <p><strong>Email:</strong> ${cvData.mail}</p>
+                        </div>
                     </div>
-                    <p><strong>Nome:</strong> ${cvData.nome}</p>
-                    <p><strong>Cognome:</strong> ${cvData.cognome}</p>
-                    <p><strong>Data di nascita:</strong> ${cvData.dataDiNascita}</p>
-                    <p><strong>Telefoni:</strong></p>
-                    <p style="padding-left: 1%"><strong>Telefono 1:</strong> ${cvData.telefono[0].telefono1}</p>
-                    <p style="padding-left: 1%"><strong>Telefono 2:</strong> ${cvData.telefono[0].telefono2}</p>
-                    <p><strong>Mail:</strong> ${cvData.mail}</p>
-                    <p><strong>Istruzione:</strong> ${cvData.istruzione}</p>
-                    <p><strong>Qualifica:</strong> ${cvData.qualifica}</p>
-                    <p><strong>Esperienza lavorativa:</strong></p>
-                    <p style="padding-left: 1%"><strong>Lavoro 1:</strong> ${cvData.esperienzaLavorativa[0].lavoro1}</p>
-                    <p style="padding-left: 1%"><strong>Lavoro 2:</strong> ${cvData.esperienzaLavorativa[0].lavoro2}</p>
-                    <p><strong>Lingue parlate:</strong></p>
-                    <p style="padding-left: 1%"><strong>lingua 1:</strong> ${cvData.lingue[0].lingua1}</p>
-                    <p style="padding-left: 1%"><strong>lingua 2:</strong> ${cvData.lingue[0].lingua2}</p>
+                    <div class="colonna-dx">
+                        <div>
+                            <p class="titolo-sezione">Istruzione</p>
+                            <p>${cvData.istruzione}</p>
+                        </div>
+                        <div>
+                            <p class="titolo-sezione">Qualifica</p>
+                            <p>${cvData.qualifica}</p>
+                        </div>
+                        <div>
+                            <p class="titolo-sezione">Esperienza lavorativa</p>
+                            <p>Lavoro 1: ${cvData.esperienzaLavorativa[0].lavoro1}</p>
+                            <p>Lavoro 2: ${cvData.esperienzaLavorativa[0].lavoro2}</p>
+                        </div>
+                        <div>
+                            <p class="titolo-sezione">Lingue parlate</p>
+                            <p>Lingua 1: ${cvData.lingue[0].lingua1}</p>
+                            <p>Lingua 2: ${cvData.lingue[0].lingua2}</p>
+                        </div>
+                    </div>
                 </div>
             `;
         }
