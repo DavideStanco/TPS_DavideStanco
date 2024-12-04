@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+</head>
+<body>
+    <h1>Portfolio Persona</h1>
+    
+    <div id="portfolioDetails"></div>
+    
+    <script>
+        function getUserIdFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('id');
+        }
+
+        function caricaPortfolioPersona() {
+            const idPersona = getUserIdFromURL();
+            if (!idPersona) {
+                alert("ID persona non trovato!");
+                return;
+            }
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "datiPortfolio.xml", true);  // Assicurati che il percorso sia corretto
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4) {
+                    if (xhr.status == 200) {
+                        // Debug: Stampa la risposta come testo per vedere cosa contiene
+                        console.log(xhr.responseText);
+
+                        // Ora prova a ottenere la risposta come XML
+                        var xmlDoc = xhr.responseXML;
+
+                        // Se la risposta XML è null, prova a caricarla come testo
+                        if (xmlDoc === null) {
+                            console.error("La risposta XML è null, la risposta testuale è: " + xhr.responseText);
+                            alert("Errore nel caricamento del file XML.");
+                        } else {
+                            mostraDettagliPortfolio(xmlDoc, idPersona);
+                        }
+                    } else {
+                        console.error("Errore nella richiesta del file XML, codice di stato: " + xhr.status);
+                        alert("Errore nella richiesta del file XML, codice di stato: " + xhr.status);
+                    }
+                }
+            };
+            xhr.send();
+        }
+
+        function mostraDettagliPortfolio(xmlDoc, idPersona) {
+            // Trova tutti gli utenti nel file XML
+            var utenti = xmlDoc.getElementsByTagName("utente");
+            var trovato = false;
+
+            // Itera su ogni "utente" e cerca quello con l'ID corrispondente
+            for (var i = 0; i < utenti.length; i++) {
+                var id = utenti[i].getElementsByTagName("id")[0].textContent;
+                
+                // Verifica se l'ID corrisponde
+                if (id == idPersona) {
+                    trovato = true;
+                    
+                    // Estrai i dettagli dell'utente
+                    var titolo = utenti[i].getElementsByTagName("titolo")[0].textContent;
+                    var abstract = utenti[i].getElementsByTagName("abstract")[0].textContent;
+                    var link = utenti[i].getElementsByTagName("link")[0].textContent;
+
+                    // Mostra i dettagli nella pagina
+                    document.getElementById("titolo").textContent = titolo;
+                    document.getElementById("abstract").textContent = abstract;
+                    document.getElementById("link").textContent = link;
+                    document.getElementById("link").href = link;
+
+                    break;  // Esce dal ciclo quando trova la persona
+                }
+            }
+
+            if (!trovato) {
+                // Se non troviamo nessun utente con l'ID
+                alert("Portfolio non trovato per la persona con ID: " + idPersona);
+            }
+        }
+
+        // Carica il portfolio non appena la pagina è pronta
+        window.onload = caricaPortfolioPersona;
+    </script>
+</body>
+</html>

@@ -71,17 +71,33 @@
 
                 var immagineCell = document.createElement("td");
                 var link = document.createElement("a");
-                link.href = `dettaglio.html?id=${persona.id}`; // URL con parametro ID, per aprire la pagina di ogni persona in base al loro id
-                link.target = "_blank"; // Apre il link in una nuova scheda
+                link.href = `dettaglio.html?id=${persona.id}`; 
+                link.target = "_blank"; 
 
                 var img = document.createElement("img");
                 img.src = persona.thumb;
                 img.alt = "Immagine di " + persona.nome;
-                img.style.width = "100px"; // Imposta una larghezza per l'immagine
+                img.style.width = "100px"; 
 
-                link.appendChild(img); // Inserisce l'immagine dentro al link
+                link.appendChild(img);
                 immagineCell.appendChild(link);
                 colonna.appendChild(immagineCell);
+
+
+                //colonna Portfolio
+                var immagineCellPortfolio = document.createElement("td");
+                var linkPortfolio = document.createElement("a");
+                linkPortfolio.href = `portfolio.html?id=${persona.id}`; 
+                linkPortfolio.target = "_blank"; 
+
+                var imgPortfolio = document.createElement("img");
+                imgPortfolio.src = persona.portfolio;
+                imgPortfolio.alt = "Portfolio di " + persona.nome;
+                imgPortfolio.style.width = "100px"; 
+
+                linkPortfolio.appendChild(imgPortfolio); 
+                immagineCellPortfolio.appendChild(linkPortfolio);
+                colonna.appendChild(immagineCellPortfolio);
 
                 tabella.appendChild(colonna);
             });
