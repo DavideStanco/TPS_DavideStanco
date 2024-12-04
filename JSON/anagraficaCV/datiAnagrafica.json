@@ -7,7 +7,8 @@
           "eta": 18,
           "indirizzo": "via Luca Rovetta 5",
           "citta": "Lainate",
-          "thumb": "tucci.jpg"
+          "thumb": "tucci.jpg",
+          "portfolio": "portfolio.png"
         },
         {
           "id": 2,
@@ -16,7 +17,8 @@
           "eta": 65,
           "indirizzo": "via Davide Rovetta 5",
           "citta": "Seregno",
-          "thumb": "freaky.jpg"
+          "thumb": "freaky.jpg",
+          "portfolio": "portfolio.png"
         },
         {
           "id": 3,
@@ -25,7 +27,8 @@
           "eta": 7,
           "indirizzo": "via Sovico Milanov 7",
           "citta": "Rho",
-          "thumb": "freakyluca.jpg"
+          "thumb": "freakyluca.jpg",
+          "portfolio": "portfolio.png"
         }
     ]
 }
