@@ -1,0 +1,51 @@
+<definitions name = "conversionService"
+             targetNamespace = "urn:conversionService"
+             xmlns = "http://schemas.xmlsoap.org/wsdl/"
+             xmlns:soap = "http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:tns = "urn:conversionService"
+             xmlns:xsd = "http://www.w3.org/2001/XMLSchema">
+
+    <message name = "ConvertRequest">
+        <part name = "Valore" type = "xsd:string"/>
+        <part name = "Valuta" type = "xsd:string"/>
+    </message>
+
+    <message name = "ConvertResponse">
+        <part name = "risultato" type = "xsd:string"/>
+    </message>
+
+    <portType name = "Convert_PortType">
+        <operation name = "convert">
+            <input message = "tns:ConvertRequest"/>
+            <output message = "tns:ConvertResponse"/>
+        </operation>
+    </portType>
+
+    <binding name = "Convert_Binding" type = "tns:Convert_PortType">
+        <soap:binding style = "rpc"
+                      transport = "http://schemas.xmlsoap.org/soap/http"/>
+        <operation name = "convert">
+            <soap:operation soapAction = "urn:conversionService#convert"/>
+            <input>
+                <soap:body
+                        encodingStyle = "http://schemas.xmlsoap.org/soap/encoding/"
+                        namespace = "urn:conversionService"
+                        use = "encoded"/>
+            </input>
+
+            <output>
+                <soap:body
+                        encodingStyle = "http://schemas.xmlsoap.org/soap/encoding/"
+                        namespace = "urn:conversionService"
+                        use = "encoded"/>
+            </output>
+        </operation>
+    </binding>
+
+    <service name = "Conversion_Service">
+        <documentation>Server</documentation>
+        <port binding = "tns:Convert_Binding" name = "Convert_Port">
+            <soap:address location = "http://127.0.0.1/SOAP/server/" />
+        </port>
+    </service>
+</definitions>
