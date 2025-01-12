@@ -8,7 +8,7 @@ if (isset($_POST['valore']) && !empty($_POST['valore']) && isset($_POST['valuta'
 
     try {
 
-        $client = new SoapClient($wsdl_url,["location" =>"http://127.0.0.1/SOAP/server/",'uri' =>"urn:conversionService"]);
+        $client = new SoapClient($wsdl_url,["location" =>"http://127.0.0.1/SOAP/server/"]);
 
         $valore = htmlentities($_POST['valore'])
         $valuta = htmlentities($_POST['valuta'])

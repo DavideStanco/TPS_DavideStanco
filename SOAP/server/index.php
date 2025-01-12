@@ -4,9 +4,9 @@
 
 function convert($valore, $valuta){
 
-  $tassiCambio = ["USD" => 1.04, "GBP" => 0.83, "CNY" => 7.59,"JPY" => 163.41];
+  $tassiCambioPath = "tassiCambio.json";
+  $conversione = json_decode(file_get_contents($tassiCambio), true)
 
-  $conversione = $tassiCambio[$valuta];
   $valutaConvertita = number_format($valore * $conversione, 2); 
 
   $conv = "conversione euro-$valuta: " . $valutaConvertita;
