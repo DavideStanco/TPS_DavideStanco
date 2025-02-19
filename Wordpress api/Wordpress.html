@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>WordPress API</title>
+</head>
+<body>
+    <input type="text" id="inputSito" placeholder="Inserisci il link del sito (esempio.com)"> 
+    <button onclick="fetchData('posts')">Ottieni Post</button>
+    <button onclick="fetchData('users')">Ottieni Utenti</button>
+
+    <div id="risultati"></div>
+
+    <script>
+        function validazioneURL(url){
+            var urlRegex = /^(https?:\/\/)?([a-z0-9]+[.])?[a-z0-9-]+\.[a-z]{2,6}(\/.*)?$/i;
+            return urlRegex.test(url);
+        }
+
+        async function fetchData(tipo){
+            let sito = document.getElementById("inputSito").value.trim();
+            
+            if(!validazioneURL(sito)){
+                document.getElementById("risultati").innerHTML = "URL non valido"; 
+                return;
+            }
+            
+            let apiUrl = `${sito.replace(/\/$/, '')}/wp-json/wp/v2/${tipo}`;
+            
+            try {
+                let risposta = await fetch(apiUrl);
+                if (!risposta.ok) throw new Error("API non disponibile o errore nel sito!");
+                let data = await risposta.json();
+                mostraRisultati(data, tipo);
+            } catch (error) {
+                document.getElementById("risultati").innerHTML = `Errore: ${error.message}`;
+            }
+        } 
+
+        function mostraRisultati(data, tipo){
+            let containerRisultati = document.getElementById("risultati");
+            containerRisultati.innerHTML = "";
+            
+            if (data.length === 0) {
+                containerRisultati.innerHTML = "Nessun risultato trovato.";
+                return;
+            }
+            
+            let lista = document.createElement("ul");
+            data.forEach(elemento => {
+                let item = document.createElement("li");
+                if (tipo === "posts") {
+                    item.innerHTML = `<strong>${elemento.title.rendered}</strong><br>${elemento.excerpt.rendered}`;
+                } else if (tipo === "users") {
+                    item.innerHTML = `<strong>${elemento.name}</strong> - ${elemento.slug}`;
+                }
+                lista.appendChild(item);
+            });
+            containerRisultati.appendChild(lista);
+        }
+    </script>
+</body>
+</html>
+
+
+
